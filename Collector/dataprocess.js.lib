@@ -1,0 +1,16 @@
+var fs = require('fs');
+function dataprocess(){
+	fs.open('./data.log','wx',(err,fd)=>{
+		if(err)
+		{
+			if(err.code === 'EEXIST')
+			console.log('dne');
+			fs.wrilte
+		}
+		else{	
+			console.log('exists');
+		}
+	});
+};
+
+dataprocess();

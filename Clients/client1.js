@@ -1,3 +1,4 @@
+
 var mqtt = require('mqtt');
 var uname = process.argv[2] || 'null';
 var pword = process.argv[3] || 'null';
@@ -6,9 +7,9 @@ const settings = {
 	clientId : proc.slice(0,proc.length-3)+'_'+ Math.random().toString(16).substr(2,8),
 	username : uname,
 	password : pword,
-	retain   : 'true',
+	retain   : true,
 }
-
+function clientconn(){
 var stopics = new Array();
 var ptopics = new Array();
 ptopics.push('status');
@@ -43,4 +44,8 @@ client1.on('message',function(topic,message){
 client1.on('error',function (err){
 	console.log("couldn't connect because of...." + err);
 	client1.end();
+	//setInterval(clientconn,5000);
 });
+}
+
+clientconn();
